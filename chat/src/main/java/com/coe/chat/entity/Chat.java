@@ -1,6 +1,7 @@
 package com.coe.chat.entity;
 
 import com.chat.producer.model.ChatDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,15 +34,16 @@ public class Chat {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="customer.id", nullable = false)
+    @JoinColumn(name="customer.id")//, nullable = false)
     private Customer customer_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phone_book.id", nullable = false)
+    @JoinColumn(name = "phone_book.id")//, nullable = false)
     private PhoneBook phone_book_id;
 
-    @Column(name = "create_date", nullable = false)
+    @Column(name = "create_date")//,nullable = false)
     private Date create_date;
+
 
     public int getId() {
         return id;

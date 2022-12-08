@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ChatDTO implements Serializable {
+
+    //NECESITO DECLARAR AQUI EL JSON Y DESPUES
     private int id;
 
     private String name;
