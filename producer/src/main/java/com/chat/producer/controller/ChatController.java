@@ -6,10 +6,13 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("chat-save")
+@RequestMapping("chat-options")
 public class ChatController {
     @Autowired
     private KafkaTemplate<String, ChatDTO> kafkaChatTemplate;
+
+    @Autowired
+    private KafkaTemplate<String, Integer> kafkaRemoveTemplate;
 
     @GetMapping("/produce/{name}")
     public String myMessage(@PathVariable("name") final String name){
@@ -25,5 +28,11 @@ public class ChatController {
         chatDTO.setName(name);
         kafkaChatTemplate.send("chat_save", chatDTO);
         return "Ya se hizo el guiso";
+    }
+
+    @DeleteMapping("/chat_delete/{id}")
+    public String deleteMyChat(@PathVariable("id") int id){
+        kafkaRemoveTemplate.send("chat_delete", id);
+        return "Ya se borro el guiso";
     }
 }

@@ -8,9 +8,6 @@ import java.util.Date;
 @Table(name="phone_book")
 public class PhoneBook {
 
-    public PhoneBook() {
-
-    }
 
     public PhoneBook(int id, Customer customerId, Customer myContactId,
                      String nickname, Date createDate, Date updateDate) {
@@ -38,6 +35,11 @@ public class PhoneBook {
     private Date createDate;
     @Column(name="update_date")
     private Date updateDate;
+
+    public PhoneBook() {
+
+    }
+
     public int getId() {
         return id;
     }

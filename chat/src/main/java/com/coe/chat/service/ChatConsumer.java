@@ -35,8 +35,13 @@ public class ChatConsumer {
         ChatDTO chatDTO = record.value();
         chatDTO.setCreate_date(new Date());
         Chat chatEntity = new Chat(chatDTO);
-        chatRepository.save(chatEntity);
         System.out.println(parseToJson(chatEntity));
+        chatRepository.save(chatEntity);
+    }
+
+    @KafkaListener(topics = "chat_delete", groupId = "group_json")
+    public void deleteChat(ConsumerRecord<Long, Integer> record) throws IOException{
+        chatRepository.deleteById(record.value());
     }
 
     public String parseToJson(Object objectToParse) throws JsonProcessingException {

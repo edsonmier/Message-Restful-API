@@ -14,17 +14,10 @@ public class Chat {
 
     }
 
-    public Chat(int id, Customer customer_id, PhoneBook phone_book_id, Date create_date) {
-        this.id = id;
-        this.customer_id = customer_id;
-        this.phone_book_id = phone_book_id;
-        this.create_date = create_date;
-    }
-
     public Chat(ChatDTO chatDTO){
         this.id = chatDTO.getId();
-        this.customer_id =  new Customer();
-        this.phone_book_id = new PhoneBook();
+        this.customer_id =  new Customer(3, "Luis", "Wicho", "+528125788638", "luis.villanueva@gmail.com", CustomerStatus.OFFLINE, new Date(), new Date());
+        this.phone_book_id = new PhoneBook(1, new Customer(), new Customer(), "WichoOP", new Date(), new Date());
         this.create_date = chatDTO.getCreate_date();
     }
 
@@ -41,7 +34,7 @@ public class Chat {
     @JoinColumn(name = "phone_book.id")//, nullable = false)
     private PhoneBook phone_book_id;
 
-    @Column(name = "create_date")//,nullable = false)
+    @Column(name = "create_date")//, nullable = false)
     private Date create_date;
 
 

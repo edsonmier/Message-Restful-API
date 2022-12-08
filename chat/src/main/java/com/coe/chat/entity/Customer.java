@@ -8,9 +8,6 @@ import java.util.Date;
 @Table(name = "customer")
 public class Customer {
 
-    public Customer() {
-    }
-
     public Customer(int id, String name, String preferredName, String phoneNumber,
                     String email, CustomerStatus status,
                     Date createDate, Date lastTimeOnline) {
@@ -43,6 +40,10 @@ public class Customer {
     private Date createDate;
     @Column(name = "last_time_online")
     private Date lastTimeOnline;
+
+    public Customer() {
+
+    }
 
     public int getId() {
         return id;
