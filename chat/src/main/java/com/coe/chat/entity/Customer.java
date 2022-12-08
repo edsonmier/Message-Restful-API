@@ -107,4 +107,18 @@ public class Customer {
     public void setLastTimeOnline(Date lastTimeOnline) {
         this.lastTimeOnline = lastTimeOnline;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", preferredName='" + preferredName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", createDate=" + createDate +
+                ", lastTimeOnline=" + lastTimeOnline +
+                '}';
+    }
 }

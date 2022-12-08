@@ -22,8 +22,8 @@ public class Chat {
 
     public Chat(ChatDTO chatDTO){
         this.id = chatDTO.getId();
-        //this.customer_id =  chatDTO.getCustomer_id();
-        //this.phone_book_id = chatDTO.getPhone_book_id();
+        this.customer_id =  new Customer();
+        this.phone_book_id = new PhoneBook();
         this.create_date = chatDTO.getCreate_date();
     }
 
@@ -73,5 +73,15 @@ public class Chat {
 
     public void setCreate_date(Date create_date) {
         this.create_date = create_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "id=" + id +
+                ", customer_id=" + customer_id +
+                ", phone_book_id=" + phone_book_id +
+                ", create_date=" + create_date +
+                '}';
     }
 }

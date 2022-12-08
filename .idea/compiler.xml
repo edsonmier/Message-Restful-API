@@ -8,16 +8,19 @@
         <outputRelativeToContentRoot value="true" />
         <module name="producer" />
         <module name="chat" />
+        <module name="chatDTO" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chat" target="11" />
+      <module name="chatDTO" target="11" />
       <module name="producer" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chat" options="-parameters" />
+      <module name="chatDTO" options="-parameters" />
       <module name="producer" options="-parameters" />
     </option>
   </component>
