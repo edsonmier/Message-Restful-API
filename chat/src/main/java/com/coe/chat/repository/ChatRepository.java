@@ -1,4 +1,4 @@
-package com.coe.chat.service;
+package com.coe.chat.repository;
 
 import com.coe.chat.entity.Chat;
 import org.springframework.data.jpa.repository.JpaRepository;

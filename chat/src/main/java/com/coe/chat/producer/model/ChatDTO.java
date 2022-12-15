@@ -1,12 +1,22 @@
-package com.chat.producer.model;
+package com.coe.chat.producer.model;
+
+import com.coe.chat.entity.Chat;
+import com.coe.chat.entity.Customer;
+import com.coe.chat.entity.PhoneBook;
 
 import java.io.Serializable;
 import java.util.Date;
 
-// De producer
 public class ChatDTO implements Serializable {
 
     public ChatDTO() {
+    }
+
+    public ChatDTO(Chat entity){
+        this.id = entity.getId();
+        this.customer_id = entity.getCustomer_id();
+        this.create_date = entity.getCreate_date();
+        this.phone_book_id = entity.getPhone_book_id();
     }
 
     private int id;

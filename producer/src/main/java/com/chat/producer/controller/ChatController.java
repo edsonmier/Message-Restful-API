@@ -6,7 +6,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("chat-options")
+@RequestMapping("chat/produce")
+@CrossOrigin
 public class ChatController {
     @Autowired
     private KafkaTemplate<String, ChatDTO> kafkaChatTemplate;
@@ -14,25 +15,30 @@ public class ChatController {
     @Autowired
     private KafkaTemplate<String, Integer> kafkaRemoveTemplate;
 
-    @GetMapping("/produce/{name}")
-    public String myMessage(@PathVariable("name") final String name){
-        ChatDTO chatDTO = new ChatDTO();
-        chatDTO.setName(name);
-        kafkaChatTemplate.send("chatEntity", chatDTO);
-        return "Message Published Successfully";
-    }
-
+    //Antiguo
     @PostMapping("/chat_save/{name}")
     public String saveMyChat(@PathVariable("name") final String name){
         ChatDTO chatDTO = new ChatDTO();
-        chatDTO.setName(name);
         kafkaChatTemplate.send("chat_save", chatDTO);
-        return "Ya se hizo el guiso";
+        return "Chat saved succesfully.";
     }
 
+    @PostMapping("")
+    public String saveChat(@RequestBody ChatDTO chatDTO){
+        kafkaChatTemplate.send("chat-save-topic", chatDTO);
+        return "Chat saved successfully.";
+    }
+
+    @DeleteMapping("/{idChat}")
+    public String deleteChat(@PathVariable("idChat") int idChat){
+        kafkaRemoveTemplate.send("chat-delete-topic", idChat);
+        return "Chat deleted successfully.";
+    }
+
+    //Antiguo
     @DeleteMapping("/chat_delete/{id}")
     public String deleteMyChat(@PathVariable("id") int id){
         kafkaRemoveTemplate.send("chat_delete", id);
-        return "Ya se borro el guiso";
+        return "Chat deleted succesfully.";
     }
 }

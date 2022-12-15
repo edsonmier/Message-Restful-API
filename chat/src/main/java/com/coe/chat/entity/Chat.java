@@ -1,6 +1,8 @@
 package com.coe.chat.entity;
 
-import com.chat.producer.model.ChatDTO;
+import com.coe.chat.producer.model.ChatDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -16,8 +18,8 @@ public class Chat {
 
     public Chat(ChatDTO chatDTO){
         this.id = chatDTO.getId();
-        this.customer_id =  new Customer(3, "Luis", "Wicho", "+528125788638", "luis.villanueva@gmail.com", CustomerStatus.OFFLINE, new Date(), new Date());
-        this.phone_book_id = new PhoneBook(1, new Customer(), new Customer(), "WichoOP", new Date(), new Date());
+        this.customer_id =  chatDTO.getCustomer_id();
+        this.phone_book_id = chatDTO.getPhone_book_id();
         this.create_date = chatDTO.getCreate_date();
     }
 
@@ -34,6 +36,8 @@ public class Chat {
     @JoinColumn(name = "phone_book.id")//, nullable = false)
     private PhoneBook phone_book_id;
 
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name = "create_date")//, nullable = false)
     private Date create_date;
 

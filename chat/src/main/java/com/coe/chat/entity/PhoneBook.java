@@ -1,13 +1,15 @@
 package com.coe.chat.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
 @Table(name="phone_book")
-public class PhoneBook {
-
+public class PhoneBook implements Serializable {
 
     public PhoneBook(int id, Customer customerId, Customer myContactId,
                      String nickname, Date createDate, Date updateDate) {
@@ -23,16 +25,20 @@ public class PhoneBook {
     @Column(name="id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="customer_id", referencedColumnName = "id", nullable = false)
     private Customer customerId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="my_contact_id", referencedColumnName = "id", nullable = false)
     private Customer myContactId;
     @Column(name="nickname")
     private String nickname;
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name="create_date")
     private Date createDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name="update_date")
     private Date updateDate;
 

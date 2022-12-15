@@ -1,15 +1,19 @@
 package com.coe.chat.entity;
 
+import com.coe.chat.producer.model.CustomerDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer implements Serializable {
 
     public Customer(int id, String name, String preferredName, String phoneNumber,
-                    String email, CustomerStatus status,
+                    String email, String status,
                     Date createDate, Date lastTimeOnline) {
         this.id = id;
         this.name = name;
@@ -19,6 +23,17 @@ public class Customer {
         this.status = status;
         this.createDate = createDate;
         this.lastTimeOnline = lastTimeOnline;
+    }
+
+    public Customer(CustomerDTO customerDTO){
+        this.id = customerDTO.getId();
+        this.name = customerDTO.getName();
+        this.preferredName = customerDTO.getPreferredName();
+        this.phoneNumber = customerDTO.getPhoneNumber();
+        this.email = customerDTO.getEmail();
+        this.status = customerDTO.getStatus();
+        this.createDate = customerDTO.getCreateDate();
+        this.lastTimeOnline = customerDTO.getLastTimeOnline();
     }
 
     @Id
@@ -33,11 +48,15 @@ public class Customer {
     private String phoneNumber;
     @Column(name = "email", nullable = false)
     private String email;
-    @Enumerated(EnumType.ORDINAL)
+
     @Column(name = "status")
-    private CustomerStatus status;
+    private String status;
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name = "create_date", nullable = false)
     private Date createDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @Column(name = "last_time_online")
     private Date lastTimeOnline;
 
@@ -85,11 +104,11 @@ public class Customer {
         this.email = email;
     }
 
-    public CustomerStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(CustomerStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
