@@ -1,6 +1,6 @@
 package com.coe.chat.service;
 
-import com.coe.chat.producer.model.ChatDTO;
+import com.chat.producer.model.ChatDTO;
 import com.coe.chat.entity.Chat;
 import com.coe.chat.repository.ChatRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;

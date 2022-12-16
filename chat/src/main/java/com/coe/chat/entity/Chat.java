@@ -1,9 +1,7 @@
 package com.coe.chat.entity;
 
-import com.coe.chat.producer.model.ChatDTO;
+import com.chat.producer.model.ChatDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;

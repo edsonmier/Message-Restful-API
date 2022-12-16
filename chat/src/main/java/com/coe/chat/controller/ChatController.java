@@ -1,15 +1,11 @@
 package com.coe.chat.controller;
 
 import com.coe.chat.entity.Chat;
-import com.coe.chat.entity.Customer;
-import com.coe.chat.producer.model.ChatDTO;
-import com.coe.chat.producer.model.CustomerDTO;
+import com.chat.producer.model.ChatDTO;
 import com.coe.chat.repository.ChatRepository;
-import com.coe.chat.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
