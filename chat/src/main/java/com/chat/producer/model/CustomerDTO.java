@@ -1,4 +1,4 @@
-package com.coe.chat.producer.model;
+package com.chat.producer.model;
 
 import com.coe.chat.entity.Customer;
 

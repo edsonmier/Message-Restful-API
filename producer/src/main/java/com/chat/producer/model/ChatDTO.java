@@ -3,7 +3,6 @@ package com.chat.producer.model;
 import java.io.Serializable;
 import java.util.Date;
 
-// De producer
 public class ChatDTO implements Serializable {
 
     public ChatDTO() {

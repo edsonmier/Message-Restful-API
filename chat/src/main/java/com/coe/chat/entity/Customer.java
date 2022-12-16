@@ -1,6 +1,6 @@
 package com.coe.chat.entity;
 
-import com.coe.chat.producer.model.CustomerDTO;
+import com.chat.producer.model.CustomerDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;

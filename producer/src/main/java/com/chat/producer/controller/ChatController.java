@@ -15,14 +15,6 @@ public class ChatController {
     @Autowired
     private KafkaTemplate<String, Integer> kafkaRemoveTemplate;
 
-    //Antiguo
-    @PostMapping("/chat_save/{name}")
-    public String saveMyChat(@PathVariable("name") final String name){
-        ChatDTO chatDTO = new ChatDTO();
-        kafkaChatTemplate.send("chat_save", chatDTO);
-        return "Chat saved succesfully.";
-    }
-
     @PostMapping("")
     public String saveChat(@RequestBody ChatDTO chatDTO){
         kafkaChatTemplate.send("chat-save-topic", chatDTO);
@@ -33,12 +25,5 @@ public class ChatController {
     public String deleteChat(@PathVariable("idChat") int idChat){
         kafkaRemoveTemplate.send("chat-delete-topic", idChat);
         return "Chat deleted successfully.";
-    }
-
-    //Antiguo
-    @DeleteMapping("/chat_delete/{id}")
-    public String deleteMyChat(@PathVariable("id") int id){
-        kafkaRemoveTemplate.send("chat_delete", id);
-        return "Chat deleted succesfully.";
     }
 }

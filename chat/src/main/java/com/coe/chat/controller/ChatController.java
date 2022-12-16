@@ -31,11 +31,5 @@ public class ChatController {
         }
         return chats;
     }
-
-    //@GetMapping("/chats/{customerId}")
-    //public ChatDTO getChatsByCustomerId(@PathVariable("customerId") int customerId) throws IOException {
-        //List<ChatDTO> chats = new ArrayList<>();
-        //List<Chat> entities = chatRepository.findAll();
-    //}
 }
 
